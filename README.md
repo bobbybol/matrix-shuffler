@@ -1,5 +1,5 @@
 # BB Matrix Shuffler - v0.8.5 beta
-Re-order a 2D array in a linear, diagonal, or centralized direction, or shuffle it randomly
+Re-order a two-dimensional array along a horizontal, vertical, or diagonal axis; wrap it outside in or inside out; or shuffle it randomly.
 
 ## Demo
 Live demonstration at [bobbybol.com/plugins/bb-matrixshuffler](http://bobbybol.com/plugins/bb-matrixshuffler/).
