@@ -1,4 +1,4 @@
-# BB Matrix Shuffler
+# BB Matrix Shuffler - v0.8.5 beta
 Re-order a 2D array in a linear, diagonal, or centralized direction, or shuffle it randomly
 
 ## Demo
@@ -11,7 +11,7 @@ Live demonstration at [bobbybol.com/plugins/bb-matrixshuffler](http://bobbybol.c
   - centralized, from the inside out or the outside in
   - random
 - Especially good for shuffling the DOM references of a grid of images.
-- Works perfectly together with the [BB Pixelify](https://github.com/bobbybol/pixeligy) plugin.
+- Works perfectly together with the [BB Pixelify](https://github.com/bobbybol/pixelify) plugin.
 
 ## Usage
 The Matrix Shuffler currently expects a jQuery object to be acting on, and will return a shuffled jQuery object when done. This means that is can turn a 1-dimensional array into a 2-dimensional array given the number of rows and columns, and eventually return a flattened 1-dimensional array or a 2-dimensional array, depending on the shuffle-algorithm chosen.  
@@ -53,6 +53,48 @@ There's a number of `options` you can fiddle with, to get the desired result of 
 Take note that each `shuffleAlgorithm` setting requires a specific `shuffleDirection` setting, otherwise the plugin won't work.
 
 ## Known issues in **beta**
-Currently the settings `linear`, `diagnal`, and `random` will return a flattened, onedimensional array, while the `circular` setting returns a 2D array. This is because a ripple-effect animation can be better achieved with the 2D array. A future version of Matrix Shuffler will give you the choice for each option to return either a onedimensional or a twodimensional array.
+Currently the settings `linear`, `diagonal`, and `random` will return a flattened, onedimensional array, while the `circular` setting returns a 2D array. This is because a ripple-effect animation can be better achieved with the 2D array. A future version of Matrix Shuffler will give you the choice for each option to return either a onedimensional or a twodimensional array.
 
 ## Use in combination with Pixelify
+This plugin can be used on any grid of images, but was initially developed to be part of the [BB Pixelify](https://github.com/bobbybol/pixelify) plugin. Hence, Pixelify delivers a couple of settings through the use of `$.data()`. Meaning that we can chain Pixelify and the Matrix Shuffler like so:
+```javascript
+var tilesToAnimate = $('.imgContainer')
+  .bbPixelify({columns: 35, rows: 15})        // cut an image up into a grid of images,
+  .bbShuffleMatrix({                          // call Matrix Shuffler to shuffle the grid,
+    shuffleAlgorithm: "diagonal",             // specify which shuffle algorithm to use ,
+    shuffleDirection: "topleft->bottomright"  // and what direction the tiles should run.
+  })
+;
+// tilesToAnimate is now the variable that you can refer to when animating the tiles
+```
+Note that you _do not_ have to specify columns and rows a second time - they are passed on from Pixelify to Matrix Shuffler.
+
+## Changelog  
+### 0.8.5  
+#### Changed
+- handle $.data object
+
+### 0.8.0  
+#### Added
+- circular shuffle
+
+### 0.7.5  
+#### Changed
+- functional refactoring
+
+### 0.7.0  
+#### Added
+- linear shuffle
+- mirror shuffle
+
+### 0.6.5  
+#### Changed
+- functional refactoring
+
+### 0.6.0  
+#### Added
+- diagonal shuffle
+
+### 0.5.0  
+#### Added
+- random shuffle
